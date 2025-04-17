@@ -46,27 +46,7 @@ namespace The_Locked_Door
 
                     if (Response == "yes")
                     {
-                        while (true)
-                        {
-                            //Console.WriteLine("What is the current password? ");
-
-                            //int GuessInt = Convert.ToInt16(Console.ReadLine());
-
-                            //if (GuessInt == Passcode)
-                            //{
-
-                            //}
-                            //else
-                            //{
-                            //    Console.WriteLine("This is not the current password. Try again. ");
-                            //    continue;
-                            //}
-
-                            //Console.WriteLine("What would you like for the new password to be? ");
-
-                            //Passcode = Convert.ToInt16(Console.ReadLine());
-                            //break;
-                        };
+                        GetNewPassword();
                     }
                     else;
                     while (true)
@@ -138,13 +118,13 @@ namespace The_Locked_Door
             }
         }
 
-        private GetNewPassword(int GuessInt)
+        private void GetNewPassword()
         {
             while (true)
             {
                 Console.WriteLine("What is the current password? ");
 
-                GuessInt = Convert.ToInt16(Console.ReadLine());
+                int GuessInt = Convert.ToInt16(Console.ReadLine());
 
                 if (GuessInt == Passcode)
                 {
