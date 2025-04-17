@@ -4,7 +4,6 @@
 string PasscodeAsString;
 int Passcode;
 
-//test comment
 while (true)
 {
     Console.WriteLine("What would you like for the passcode to be?");

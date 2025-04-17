@@ -31,9 +31,6 @@ namespace The_Locked_Door
 
         public void Run()
         {
-
-
-
             while (true)
             {
                 Console.WriteLine("What would you like to do with the door?");
@@ -49,70 +46,18 @@ namespace The_Locked_Door
                         GetNewPassword();
                     }
                     else;
-                    while (true)
-                    {
-                        Console.WriteLine("What is the passcode? ");
-                        int Guess = Convert.ToInt16(Console.ReadLine());
 
-                        if (Guess == Passcode)
-                        {
-                            Console.WriteLine("The door is now unlocked. ");
-                            doorstate = DoorState.CLOSED;
-                            break;
-                        }
-                        else
-                        {
-                            Console.WriteLine("This is not the current password. Try again. ");
-                            continue;
-                        }
-                    }
+                    UnlockDoor();
 
                 }
                 else if (doorstate == DoorState.CLOSED)
                 {
-                    while (true)
-                    {
-                        Console.WriteLine("The door is closed. What would you like to do? ");
-                        string Response = (Console.ReadLine());
-                        Response.ToLower();
-                        if (Response == "open")
-                        {
-                            Console.WriteLine("The door is now open.");
-                            doorstate = DoorState.OPEN;
-                            break;
-                        }
-                        else if (Response == "lock")
-                        {
-                            Console.WriteLine("The door is now locked.");
-                            doorstate = DoorState.LOCKED;
-                            break;
-                        }
-                        else
-                        {
-                            Console.WriteLine("That is not an option.");
-                            continue;
-                        }
-                    }
+                    ClosedDoor();
+                    
                 }
                 else
                 {
-                    while (true)
-                    {
-                        Console.WriteLine("The door is open. Would you like to close it? ");
-                        string Response = (Console.ReadLine());
-                        Response.ToLower();
-                        if (Response == "yes")
-                        {
-                            Console.WriteLine("The door is now closed.");
-                            doorstate = DoorState.CLOSED;
-                            break;
-                        }
-                        else
-                        {
-                            Console.WriteLine("That is not an option.");
-                            continue;
-                        }
-                    }
+                    OpenDoor();
                 }
 
             }
@@ -126,11 +71,7 @@ namespace The_Locked_Door
 
                 int GuessInt = Convert.ToInt16(Console.ReadLine());
 
-                if (GuessInt == Passcode)
-                {
-
-                }
-                else
+                if (GuessInt != Passcode)
                 {
                     Console.WriteLine("This is not the current password. Try again. ");
                     continue;
@@ -142,5 +83,74 @@ namespace The_Locked_Door
                 break;
             }
         }
+        private void UnlockDoor()
+        {
+            while (true)
+            {
+                Console.WriteLine("What is the passcode? ");
+                int Guess = Convert.ToInt16(Console.ReadLine());
+
+                if (Guess == Passcode)
+                {
+                    Console.WriteLine("The door is now unlocked. ");
+                    doorstate = DoorState.CLOSED;
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("This is not the current password. Try again. ");
+                    continue;
+                }
+            }
+        }
+        private void ClosedDoor()
+        {
+            while (true)
+            {
+                Console.WriteLine("The door is closed. What would you like to do? ");
+                string Response = (Console.ReadLine());
+                Response.ToLower();
+                
+                if (Response == "open")
+                {
+                    Console.WriteLine("The door is now open.");
+                    doorstate = DoorState.OPEN;
+                    break;
+                }
+                else if (Response == "lock")
+                {
+                    Console.WriteLine("The door is now locked.");
+                    doorstate = DoorState.LOCKED;
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("That is not an option.");
+                    continue;
+                }
+            }
+        }
+        private void OpenDoor()
+        {
+            while (true)
+            {
+                Console.WriteLine("The door is open. Would you like to close it? ");
+                string Response = (Console.ReadLine());
+                Response.ToLower();
+                if (Response == "yes")
+                {
+                    Console.WriteLine("The door is now closed.");
+                    doorstate = DoorState.CLOSED;
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("That is not an option.");
+                    continue;
+                }
+            }
+        }
+
+
     }
 }
